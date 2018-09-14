@@ -2,17 +2,26 @@
 html ids:
 lives
 prevGuess
-answer
+wins
+losses
+message
+reveal
 
 html.getElementbyId:
 livesHTML
 prevHTML
-answerHTML
+messageHTML
+winsHTML
+lossesHTML
+revealHTML
 
-javascript global variables:
+javascript ariables:
 gameLives
-gameGuesses = array?
-"message" / gameAnswer
+gameGuesses = array
+gameAnswer
+gameConditon (whether the game logic is active or disabled)
+gameWins
+gameLosses
 */
 
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
@@ -27,6 +36,8 @@ var gameAnswer = randomLetter();
 var gameLives = 7;
 var gameGuesses = [];
 var gameCondition = true;
+var gameWins = 0;
+var gameLosses = 0;
 
 // for console cheaters...
 console.log(gameAnswer);
@@ -39,17 +50,22 @@ function gameReset() {
   gameGuesses = [];
   prevHTML.textContent = gameGuesses.join(", ");
   gameCondition = true;
-  answerHTML.textContent = "";
+  messageHTML.textContent = "";
+  revealHTML.textContent = "Hidden";
 }
 
 
 // html references 
 var livesHTML = document.getElementById("lives");
 var prevHTML = document.getElementById("prevGuess");
-var answerHTML = document.getElementById("answer");
+var messageHTML = document.getElementById("message");
+var winsHTML = document.getElementById("wins");
+var lossesHTML = document.getElementById("losses");
+var revealHTML =document.getElementById("reveal");
 
 livesHTML.textContent = gameLives;
-
+lossesHTML.textContent = gameLosses;
+winsHTML.textContent = gameWins;
 
 document.onkeyup = function (event) {
   //game condition check (plays when true)
@@ -59,27 +75,36 @@ document.onkeyup = function (event) {
 
   if (letters.includes(userGuess) && gameCondition === true) {
     if (userGuess === gameAnswer) {
-      answerHTML.textContent = "You won! Press Enter to play again!";
+      messageHTML.textContent = "You won! Press Enter to play again!";
+      gameWins += 1;
+      winsHTML.textContent = gameWins;
+      revealHTML.textContent = gameAnswer;
       gameCondition = false;
     } else if (gameGuesses.includes(userGuess)) {
-      answerHTML.textContent = "You tried that one before...";
+      messageHTML.textContent = "You tried that one before...";
     } else {
       gameGuesses.push(userGuess);
       prevHTML.textContent = gameGuesses.join(", ");
       gameLives -= 1;
       livesHTML.textContent = gameLives;
       if (gameLives === 0) {
-        answerHTML.textContent = "You Lost. Press Enter to try again."
-        gameCondition = false;
+        messageHTML.textContent = "You Lost. Press Enter to try again."
+        gameLosses += 1;
+        lossesHTML.textContent = gameLosses;
+        revealHTML.textContent = gameAnswer;
+        gameCondition = false;  
       }
     }
   } else {
-    answerHTML.textContent = "That's not a letter.";
+    messageHTML.textContent = "That's not a letter.";
+      if (userGuess !== "Enter" && gameCondition === false) {
+        messageHTML.textContent = "Nope. Press Enter.";
+      }
   }
 
   if (gameCondition === false && userGuess === "Enter") {
     gameReset();
-    console.log(gameAnswer); //Answer has been reset new answer is logged for dirty console cheaters
+    console.log(gameAnswer);     
     gameCondition = true;
   }
 }
