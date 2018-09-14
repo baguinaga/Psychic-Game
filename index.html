@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <script src="assets/javascript/game.js"></script>
   <title>The Psychic Game</title>
 </head>
 
@@ -29,7 +28,7 @@
       <div class="card-body">
         <h5 class="card-title">The rules for this game are as follows:</h5>
         <ul class="card-text">
-          <li> I am only thinking of a letter. No numbers or other characters will be accepted as guesses.</li>
+          <li> I am only thinking of a letter. Numbers or other characters will not be accepted as guesses.</li>
           <li> I will list all of your previous guesses.</li>
           <li> You have 7 chances to guess correctly or it's game over. </li>
         </ul>
@@ -37,15 +36,17 @@
     </div>
 
     <div class="col-12 col-md-5 card text-white bg-info mb-3">
-      <h4 class="card-header">You have <span id="livesHTML"> 7 </span> guesses left.</h4>
+      <h4 class="card-header">You have <span id="lives"></span> guesses left.</h4>
       <div class="card-body">
-        <h5 class="card-title">Your previous guesses are:<span id=failedHTML></span></h5>
+        <h5 class="card-title">Your previous guesses are:&nbsp;<span id="prevGuess"></span></h5>
         <p class="card-text">The letter I'm thinking of is:</p>
-        <h1 id=theAnswerHTML></h1>
+        <h1 id="answer"></h1>
       </div>
     </div>
 
   </div>
+
+  <script src="assets/javascript/game.js"></script>
 </body>
 
 </html>
