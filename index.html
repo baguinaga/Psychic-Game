@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="assets/javascript/game.js"></script>
+  <title>The Psychic Game</title>
+</head>
+
+<body>
+
+  <header class="jumbotron jumbotron-fluid text-white my-4">
+    <div class="container">
+      <h1 class="display-3">The Psychic Game</h1>
+      <p class="lead">I'm thinking of a letter. Can you guess what it is? </p>
+    </div>
+  </header>
+
+
+  <div class="row d-flex justify-content-around">
+
+    <div class="col-12 col-md-5 card text-white bg-info mb-3">
+      <h4 class="card-header">Instructions</h4>
+      <div class="card-body">
+        <h5 class="card-title">The rules for this game are as follows:</h5>
+        <ul class="card-text">
+          <li> I am only thinking of a letter. No numbers or other characters will be accepted as guesses.</li>
+          <li> I will list all of your previous guesses.</li>
+          <li> You have 7 chances to guess correctly or it's game over. </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-5 card text-white bg-info mb-3">
+      <h4 class="card-header">You have <span id="livesHTML"> 7 </span> guesses left.</h4>
+      <div class="card-body">
+        <h5 class="card-title">Your previous guesses are:<span id=failedHTML></span></h5>
+        <p class="card-text">The letter I'm thinking of is:</p>
+        <h1 id=theAnswerHTML></h1>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>

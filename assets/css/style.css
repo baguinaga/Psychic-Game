@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url(../images/symphony.png);
+}
+
+.jumbotron {
+  background: #2E86C1;
+  color: white;
+}
+
+.card {
+  font-size: 1.2em;
+}
+
+#theAnswerHTML {
+  text-align: center;
+  font-size: 3em;
+}
