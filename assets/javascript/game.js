@@ -1,29 +1,4 @@
-/*
-html ids:
-lives
-prevGuess
-wins
-losses
-message
-reveal
-
-html.getElementbyId:
-livesHTML
-prevHTML
-messageHTML
-winsHTML
-lossesHTML
-revealHTML
-
-javascript ariables:
-gameLives
-gameGuesses = array
-gameAnswer
-gameConditon (whether the game logic is active or disabled)
-gameWins
-gameLosses
-*/
-
+// array of acceptable answers (this)
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 // random letter function
@@ -54,14 +29,13 @@ function gameReset() {
   revealHTML.textContent = "Hidden";
 }
 
-
 // html references 
 var livesHTML = document.getElementById("lives");
 var prevHTML = document.getElementById("prevGuess");
 var messageHTML = document.getElementById("message");
 var winsHTML = document.getElementById("wins");
 var lossesHTML = document.getElementById("losses");
-var revealHTML =document.getElementById("reveal");
+var revealHTML = document.getElementById("reveal");
 
 livesHTML.textContent = gameLives;
 lossesHTML.textContent = gameLosses;
@@ -92,20 +66,19 @@ document.onkeyup = function (event) {
         gameLosses += 1;
         lossesHTML.textContent = gameLosses;
         revealHTML.textContent = gameAnswer;
-        gameCondition = false;  
+        gameCondition = false;
       }
     }
   } else {
     messageHTML.textContent = "That's not a letter.";
-      if (userGuess !== "Enter" && gameCondition === false) {
-        messageHTML.textContent = "Nope. Press Enter.";
-      }
+    if (userGuess !== "Enter" && gameCondition === false) {
+      messageHTML.textContent = "Nope. Press Enter.";
+    }
   }
 
   if (gameCondition === false && userGuess === "Enter") {
     gameReset();
-    console.log(gameAnswer);     
+    console.log(gameAnswer);
     gameCondition = true;
   }
 }
-
